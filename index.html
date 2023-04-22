@@ -2,222 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <title>Item Lister</title>
+</head>
+<body>
+  <header id="main-header" class="bg-success text-white p-4 mb-3">
+    <div class="container">
+      <h1 id="header-title">Item Lister <span style="display:none">123</span></h1>
+    </div>
+  </header>
+  <div class="container">
+   <div id="main" class="card card-body">
+    <h2 class="title">Add Items</h2>
+    <form class="form-inline mb-3">
+      <input type="text" class="form-control mr-2">
+      <input type="submit" class="btn btn-dark" value="Submit">
+    </form>
+    <h2 class="title">Items</h2>
+    <ul id="items" class="list-group">
+      <li class="list-group-item">Item 1</li>
+      <li class="list-group-item">Item 2</li>
+      <li class="list-group-item">Item 3</li>
+      <li class="list-group-item">Item 4</li>
+    </ul>
+   </div>
+  </div>
+  <script src="index.js"></script>
   
-  <style>
- .header{
-    position: initial;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 25px 13%;
-   
-    display: flex;
-    justify-content: space-between;
-    align-items: first baseline;
-    z-index: 100;
-    background: url('registration.jpg')no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-.navbar a{
-    position: initial;
-    font-size: 2em;
-    color: #fff;
-    margin-left: 30px;
-    text-decoration: none;
-    
-  
-    left: 0;
-    width: 100%;
-    height: 2px;
-  
-    
-   
-}
-
-section{
-    position: initial;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    min-height: 80vh;
-    width: 100%;
-    background: url('i.jpg')no-repeat;
-    background-position: center;
-    background-size: cover;
-    
-}
-.form-box{
-    position: relative;
-    width: 380px;
-    height: 450px;
-    background: transparent; 
-    backdrop-filter: blur(15px);
-    border: 2px solid white;
-    border-radius: 20px;
-   
-    display: flex;
-    justify-content: center;
-    align-items: center  rgb(250, 191, 240);
-    box-shadow: 10px 10px 10px rgb(248, 245, 248);
-   
-   
-}
-
-h2{
-    font-size: 1.8em;
-    color: #1e06a8;
-    text-align: center;
-    
-}
-h1{
-    font-size: 2em;
-    color: #1e06a8;
-    text-align: center;
-}
-.inputbox{
-    position: relative;
-    margin: 30px 0;
-    width: 310px;
-    border-bottom: 2px solid #fff;
-    box-shadow: 5px 5px 5px rgb(248, 202, 244);
-}
-.inputbox label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #6404e2;
-    font-size: 1.8em;
-    pointer-events: none;
-    transition: .5s;
-}
-input:focus ~ label,
-input:valid ~ label{
-top: -5px;
-}
-.inputbox input {
-    width: 100%;
-    height: 50px;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    padding:0 35px 0 5px;
-    color: #fff;
-}
-.inputbox ion-icon{
-    position: absolute;
-    right: 8px;
-    color: #280aec;
-    font-size: 1.2em;
-    top: 20px;
-}
-
-button {
-    width: 100%;
-    height: 35px;
-    border-radius: 40px;
-    background: #4d1be0;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    color: #fff;
-}
-.text-item{
-    background: transparent ;
-    backdrop-filter: blur(15px);
-    font-size: 1.1em;
-   
-}
-
-  </style>
-  </head>
-  <body>
-     <!-- NAVBAR CREATION -->
-   <header class="header">
-    <nav class="navbar">
-         <a class='a' href="#">Home</a>
-          <a class='a' href="#">About</a>
-          <a class='a' href="#">Contact</a>
-          <a class='a' href="#">Help</a>
-          
-    </nav>
-    <!---->
-    </header>
-    <div class="background"></div>
-    <section>
-        <div class="form-box">
-            <div class="form-value">
-                <form id="my-form" action="#"  onsubmit="registerUser()">
-                    <h2>Book a call</h2>
-                    <div class="inputbox">
-                        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-                        <input type="name" name="name" id="name"  placeholder="enter a fullname" required>
-                        <label for="">Name</label>
-                    </div>
-                    <div class="inputbox">
-                        <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" name="email" id="email" placeholder="enter your email id" required>
-                        <label for="">Email</label>
-                    </div>
-                    <div class="inputbox">
-                        <ion-icon name="call-outline"></ion-icon>
-                        <input type="phone" name="phone" id="phone" placeholder="enter your phone no" required>
-                        <label for="">Phone</label>
-                    </div>
-                    <div class="inputbox">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                        <input type="date" name="date" id="date" placeholder="enter a date" required>
-                        <label for="" >Time to call</label>
-                    </div>
-                    <button class="btn" type="submit" value="Get a call">Get a call</button>
-                    
-                </form>
-              
-               
-            </div>
-        </div>
-        <div class="item">
-            <h1 class="logo"><i class='bx bxl-xing'></i>Call Service</h1>
-            <div class="text-item">
-                <h2>Welcome! <br><span>
-                    To Our website
-                </span></h2>
-                <p>This is India's most visited service website.Gest result faster,brighter and sharper.</p>
-                <p>Hope you'll get a call that u want.</p>
-                <h4>Good Luck!</h4>
-                <div class="social-icon">
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
-                    <a href="#"><i class='bx bxl-youtube'></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-linkedin'></i></a>
-                </div>
-            </div>
-        </div>
-       
-    </section>
-    <script src="index.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-        function registerUser() {
-            const name=document.getElementById("name").value;
-            const email=document.getElementById("email").value;
-            const phone=document.getElementById("phone").value;
-            const date=document.getElementById("date").value;
-            
-            console.log(name);
-            console.log(email);
-            console.log(phone);
-            console.log(date);
-        }
-    </script>
-   
 </body>
 </html>

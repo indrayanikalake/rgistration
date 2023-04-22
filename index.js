@@ -1,23 +1,16 @@
-/** 
-var ul=document.querySelector('.items');
-ul.firstElementChild.innerHTML='<h1>HELLO</h1>';
-ul.firstElementChild.style.background='green';
-ul.children[1].style.background='yellow';
-console.log(ul.firstElementChild);**/
-
-const btn=document.querySelector('.btn');
-const nameInput=document.querySelector('#name');
-const emailInput=document.querySelector('#email');
-btn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    console.log(nameInput.value);
-    console.log(emailInput.value);
-})
-btn.addEventListener('mouseover',(e)=>{
-    e.preventDefault();
-   btn.style.background='green'
-})
-btn.addEventListener('mouseout',(e)=>{
-    e.preventDefault();
-   btn.style.background='blue';
-})
+var items=document.getElementsByClassName("list-group-item");
+console.log(items);
+console.log(items[1]);
+items[1].textContent='Hello World';
+items[1].style.fontsize='bold';
+//items[1].style.backgroundColor='yellow';
+//items,s.style.backgroundColor='#f4f4f4';
+for(let i=0;i<items.length;i++){
+    items[i].style.backgroundColor='#f4f4f4';
+}
+//question
+items[2].style.backgroundColor="green";
+for(let i=0;i<items.length;i++){
+    items[i].style.color='#00ff00';
+    items[i].style.fontsize='bold';
+}
