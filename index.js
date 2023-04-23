@@ -8,10 +8,14 @@ console.log(ul.firstElementChild);**/
 const btn=document.querySelector('.btn');
 const nameInput=document.querySelector('#name');
 const emailInput=document.querySelector('#email');
+const phoneno=document.querySelector('#phone');
 btn.addEventListener('click',(e)=>{
     e.preventDefault();
-    console.log(nameInput.value);
-    console.log(emailInput.value);
+   
+    localStorage.setItem('name',nameInput.value)
+  
+    localStorage.setItem('email',emailInput.value);
+    localStorage.setItem('phone',phoneno.value);
 })
 btn.addEventListener('mouseover',(e)=>{
     e.preventDefault();
