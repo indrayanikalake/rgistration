@@ -35,3 +35,6 @@ var container=document.querySelector('header .container');
 var h1=document.querySelector('header h1');
 div.style.fontSize='30px'
 container.insertBefore(div,h1);
+var list=document.querySelector('.container #items');
+var li=document.querySelector('.list-group-items:nth-child(0)');
+list.insertBefore(div,li);
