@@ -8,7 +8,6 @@ itemlist.lastElementChild.textContent='hello4';
 console.log(itemlist.lastChild);
 //5 firstelemnetchild
 console.log(itemlist.firstElementChild);
-itemlist.firstElementChild.textContent='hello1';
 //6 firstchild
 console.log(itemlist.firstChild);
 //7 nextsibling
@@ -29,3 +28,10 @@ var text=document.createTextNode('Hello World');
 //14 appendChild
 div.appendChild(text);
 console.log(div);
+//adding to header
+//appendChild
+div.appendChild(text);
+var container=document.querySelector('header .container');
+var h1=document.querySelector('header h1');
+div.style.fontSize='30px'
+container.insertBefore(div,h1);
