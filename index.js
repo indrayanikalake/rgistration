@@ -11,11 +11,13 @@ const emailInput=document.querySelector('#email');
 const phoneno=document.querySelector('#phone');
 btn.addEventListener('click',(e)=>{
     e.preventDefault();
-   
-    localStorage.setItem('name',nameInput.value)
-  
-    localStorage.setItem('email',emailInput.value);
-    localStorage.setItem('phone',phoneno.value);
+    let object={name:nameInput.value,
+                email:emailInput.value,
+                phoneno:phoneno.value};
+    let obj_serialized=JSON.stringify(object); 
+    localStorage.setItem('object',obj_serialized);        
+    let obj_deserialized=JSON.parse(localStorage.getItem('object'));
+    console.log(obj_deserialized);
 })
 btn.addEventListener('mouseover',(e)=>{
     e.preventDefault();
