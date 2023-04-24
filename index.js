@@ -1,45 +1,75 @@
-/** 
-var ul=document.querySelector('.items');
-ul.firstElementChild.innerHTML='<h1>HELLO</h1>';
-ul.firstElementChild.style.background='green';
-ul.children[1].style.background='yellow';
-console.log(ul.firstElementChild);**/
+let Name = document.getElementById('name');
+let email = document.getElementById('email');
+let number = document.getElementById('number');
+let items = document.getElementById('items');
+let form = document.getElementById('addForm');
+form.addEventListener('submit', additems);
+items.addEventListener('click', deleteitem);
+items.addEventListener('click', Edititems);
 
-const btn=document.querySelector('.btn');
-const nameInput=document.querySelector('#name');
-const emailInput=document.querySelector('#email');
-const phoneno=document.querySelector('#phone');
-const form=document.getElementById('my-form');
-const items=document.getElementById('items')
+obj = {
+  personName: '',
+  personEmail: '',
+  personNumber: ''
+}
 
-btn.addEventListener('click',(e)=>{
-    e.preventDefault();
-   
-    let object={name:nameInput.value,
-        email:emailInput.value,
-        phoneno:phoneno.value};
-    let obj_serialized=JSON.stringify(object); 
-    localStorage.setItem(emailInput.value,obj_serialized); 
-    const name=document.getElementById('name').value;
-    const email=document.getElementById('email').value;
-    const phone=document.getElementById('phone').value; 
-    const li=document.createElement('li');
-    li.className='list-group-item';
-    li.appendChild(document.createTextNode(name));
-    li.appendChild(document.createTextNode(' '));
-    li.appendChild(document.createTextNode(email));
-    li.appendChild(document.createTextNode(' '));
-    li.appendChild(document.createTextNode(phone));
-    li.style.color='blue';
-    items.appendChild(li);
-    items.style.backgroundColor='pink';
-})
-btn.addEventListener('mouseover',(e)=>{
-    e.preventDefault();
-   btn.style.background='green';
-   
-})
-btn.addEventListener('mouseout',(e)=>{
-    e.preventDefault();
-   btn.style.background='blue';
-})
+function additems(e) {
+  e.preventDefault();
+  obj.personName = Name.value;
+  obj.personEmail = email.value;
+  obj.personNumber = number.value;
+
+  let newobj = JSON.stringify(obj);
+  localStorage.setItem(email.value, newobj);
+  // console.log(newobj)
+
+  let items = document.getElementById('items');
+  let newitem = Name.value + '=> ' + number.value + ' | ' + email.value;
+
+  let li = document.createElement('li');
+  let deletebtn = document.createElement('button');
+  let Editbtn = document.createElement('button');
+
+  li.className = 'list-group-item';
+  deletebtn.className = 'btn btn-danger btn-sm float-right delete';
+  Editbtn.className = 'btn btn-primary btn-sm float-right Edit';
+
+  li.innerText = newitem;
+  deletebtn.innerText = 'X';
+  Editbtn.innerText = 'Edit';
+
+  li.appendChild(deletebtn);
+  li.appendChild(Editbtn)
+  items.appendChild(li);
+
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('number').value = '';
+}
+
+function deleteitem(e) {
+  e.preventDefault();
+  if (e.target.classList.contains('delete')) {
+    let li = e.target.parentElement;
+    let arr = li.firstChild.wholeText.split(' ');
+    // console.log(arr[arr.length - 1])
+    localStorage.removeItem(arr[arr.length - 1])
+    items.removeChild(li);
+  }
+}
+
+function Edititems(e) {
+  e.preventDefault();
+  if (e.target.classList.contains('Edit')) {
+    let li = e.target.parentElement;
+    let arr = li.firstChild.wholeText.split(' ');
+    let global = localStorage.getItem(arr[arr.length - 1])
+    let newglobal = JSON.parse(global);
+    // console.log(newglobal)
+    document.getElementById('name').value = newglobal.personName;
+    document.getElementById('email').value = newglobal.personEmail;
+    document.getElementById('number').value = newglobal.personNumber;
+    localStorage.removeItem(arr[arr.length - 1])
+    items.removeChild(li);
+  }
+}
