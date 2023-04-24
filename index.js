@@ -30,6 +30,14 @@ btn.addEventListener('click',(e)=>{
     li.appendChild(document.createTextNode(email));
     li.appendChild(document.createTextNode(' '));
     li.appendChild(document.createTextNode(phone));
+    //delete button
+    const deleteBtn=document.createElement('button');
+    deleteBtn.className='btn btn-danger btn-sm float-right delete';
+    deleteBtn.style.backgroundColor='red';
+    deleteBtn.style.width='5%';
+    deleteBtn.style.height='10%';
+    deleteBtn.appendChild(document.createTextNode('X'));
+    li.appendChild(deleteBtn);
     li.style.color='blue';
     items.appendChild(li);
     items.style.backgroundColor='pink';
@@ -43,3 +51,12 @@ btn.addEventListener('mouseout',(e)=>{
     e.preventDefault();
    btn.style.background='blue';
 })
+items.addEventListener('click', removeItem);
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+      
+        var li = e.target.parentElement;
+        items.removeChild(li);
+        localStorage.removeItem(emailInput.value); 
+    }
+  }
